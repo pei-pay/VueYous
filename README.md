@@ -1,6 +1,6 @@
 # vue-use-rep
 
-This template should help get you started developing with Vue 3 in Vite.
+A replicate repo of [VueUse](https://github.com/vueuse/vueuse)
 
 ## Recommended IDE Setup
 
