@@ -7,7 +7,6 @@
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
-    "test:unit": "vitest",
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
@@ -33,7 +32,6 @@
     "prettier": "^3.0.3",
     "typescript": "~5.4.0",
     "vite": "^5.1.6",
-    "vitest": "^1.4.0",
     "vue-tsc": "^2.0.6"
   }
 }
