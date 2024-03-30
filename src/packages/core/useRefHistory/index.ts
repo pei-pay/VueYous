@@ -1,19 +1,17 @@
-import { ref } from "vue";
+import { type Ref } from "vue";
+import { useManualRefHistory, type UseManualRefHistoryReturn } from "../useManualRefHistory";
 
-export function useRefHistory() {
-  const history = ref([]);
+export interface UseRefHistoryReturn<Raw, Serialized> extends UseManualRefHistoryReturn<Raw, Serialized> {
+}
 
-  const undo = () => {
+// TODO: Serialized って何?
+export function useRefHistory<Raw, Serialized = Raw>(
+  source: Ref<Raw>
+) {
 
-  };
-
-  const redo = () => {
-
-  };
+  const manualHistory = useManualRefHistory(source);
 
   return {
-    history,
-    undo,
-    redo
+    ...manualHistory
   };
 }

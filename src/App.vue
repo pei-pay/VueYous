@@ -1,12 +1,42 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+// TODO: make formatDate
+import { formatDate } from '@vueuse/core';
 
 import { useRefHistory } from './packages';
 
-const counter = ref(0);
-const { history, undo, redo } = useRefHistory();
+function format(ts: number) {
+  return formatDate(new Date(ts), 'YYYY-MM-DD HH:mm:ss');
+};
+
+const count = ref(0);
+const inc = () => count.value++;
+const dec = () => count.value--;
+const { history, undo, redo, canUndo, canRedo } = useRefHistory(count);
 </script>
 
 <template>
-  app.vue
-</template>./packages
+  <div>Count: {{ count }}</div>
+  <button @click="inc()">
+    Increment
+  </button>
+  <button @click="dec()">
+    Decrement
+  </button>
+  <span class="ml-2">/</span>
+  <button :disabled="!canUndo" @click="undo()">
+    Undo
+  </button>
+  <button :disabled="!canRedo" @click="redo()">
+    Redo
+  </button>
+  <br>
+  <br>
+  <note>History</note>
+  <div>
+    <div v-for="i in history" :key="i.timestamp">
+      <span>{{ format(i.timestamp) }}</span>
+      <span>{ value: {{ i.snapshot }} }</span>
+    </div>
+  </div>
+</template>
