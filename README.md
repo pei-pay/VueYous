@@ -1,6 +1,6 @@
 # vue-use-rep
 
-A replicate repo of [VueUse](https://github.com/vueuse/vueuse)
+A minimum replicate repo of [VueUse](https://github.com/vueuse/vueuse)
 
 ## Recommended IDE Setup
 
