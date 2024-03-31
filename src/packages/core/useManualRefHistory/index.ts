@@ -1,8 +1,10 @@
 // NOTE: 実際は 'vue-demi' からimportされてる
 import { computed, markRaw, ref, type Ref } from "vue";
-// TODO: make timestamp
-import { timestamp } from "@vueuse/shared";
-import { type CloneFn, cloneFnJSON } from "@vueuse/core";
+
+import { timestamp } from "@/packages/shared/utils";
+
+import type { CloneFn } from "../useCloned";
+import { cloneFnJSON } from '../useCloned';
 
 export interface UseRefHistoryRecord<T> {
   snapshot: T;
