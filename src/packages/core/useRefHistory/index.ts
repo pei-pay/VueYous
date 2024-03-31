@@ -3,11 +3,10 @@ import { watchIgnorable } from "@/packages/shared";
 
 import { useManualRefHistory, type UseManualRefHistoryReturn } from "../useManualRefHistory";
 
-export interface UseRefHistoryReturn<Raw, Serialized> extends UseManualRefHistoryReturn<Raw, Serialized> {
+export interface UseRefHistoryReturn<Raw> extends UseManualRefHistoryReturn<Raw> {
 }
 
-// TODO: Serialized は最低限だと必要ないかも
-export function useRefHistory<Raw, Serialized = Raw>(
+export function useRefHistory<Raw>(
   source: Ref<Raw>
 ) {
 

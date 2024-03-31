@@ -3,34 +3,31 @@ import { computed, markRaw, ref, type Ref } from "vue";
 
 import { timestamp } from "@/packages/shared/utils";
 
-import type { CloneFn } from "../useCloned";
-import { cloneFnJSON } from '../useCloned';
-
 export interface UseRefHistoryRecord<T> {
   snapshot: T;
   timestamp: number;
 }
 
-export interface UseManualHistoryOptions<Raw, Serialized = Raw> {
+export interface UseManualHistoryOptions<Raw> {
   setSource?: (source: Ref<Raw>, v: Raw) => void;
 }
 
-export interface UseManualRefHistoryReturn<Raw, Serialized> {
+export interface UseManualRefHistoryReturn<Raw> {
   // TODO: もらう source をなぜ返す必要があるのか?
   // /** Bypassed tracking ref from the argument s*/
   // source: Ref<Raw>;
 
   /** An array of history records for undo, newest comes to first */
-  history: Ref<UseRefHistoryRecord<Serialized>[]>;
+  history: Ref<UseRefHistoryRecord<Raw>[]>;
 
   /** Last history point, source can be different if paused */
-  last: Ref<UseRefHistoryRecord<Serialized>>;
+  last: Ref<UseRefHistoryRecord<Raw>>;
 
   /** Same as {@link UseManualRefHistoryReturn.history | history} */
-  undoStack: Ref<UseRefHistoryRecord<Serialized>[]>;
+  undoStack: Ref<UseRefHistoryRecord<Raw>[]>;
 
   /** Records array for redo */
-  redoStack: Ref<UseRefHistoryRecord<Serialized>[]>;
+  redoStack: Ref<UseRefHistoryRecord<Raw>[]>;
 
   /** A ref representing if undo is possible (non empty undoStack) */
   canUndo: Ref<boolean>;
@@ -54,67 +51,33 @@ export interface UseManualRefHistoryReturn<Raw, Serialized> {
   reset: () => void;
 }
 
-function fnBypass<F, T>(v: F) {
-  return v as unknown as T;
-}
 function fnSetSource<F>(source: Ref<F>, value: F) {
   return source.value = value;
 }
 
-type FnCloneOrBypass<F, T> = (v: F) => T;
-
-function defaultDump<R, S>(clone?: boolean | CloneFn<R>) {
-  return (clone
-    ? typeof clone === 'function'
-      ? clone
-      : cloneFnJSON
-    : fnBypass
-  ) as unknown as FnCloneOrBypass<R, S>;
-}
-
-function defaultParse<R, S>(clone?: boolean | CloneFn<R>) {
-  return (clone
-    ? typeof clone === 'function'
-      ? clone
-      : cloneFnJSON
-    : fnBypass
-  ) as unknown as FnCloneOrBypass<S, R>;
-}
-
-// TODO: optionsは指定なしで実装してみる
-export function useManualRefHistory<Raw, Serialized = Raw>(
+export function useManualRefHistory<Raw>(
   source: Ref<Raw>,
-  options: UseManualHistoryOptions<Raw, Serialized> = {},
-): UseManualRefHistoryReturn<Raw, Serialized> {
+  options: UseManualHistoryOptions<Raw> = {},
+): UseManualRefHistoryReturn<Raw> {
 
   const {
     setSource = fnSetSource
   } = options;
 
-  /*
-   * NOTE: optionで指定できるやつら。一旦デフォ値だけ使うようにする
-   * If you are going to mutate the source, you need to pass a custom clone function or use clone true as a param, 
-   * that is a shortcut for a minimal clone * * function x => JSON.parse(JSON.stringify(x)) that will be used in both dump and parse.
-   * 
-   */
-  const clone = false;
-  const dump = defaultDump<Raw, Serialized>(clone);
-  const parse = defaultParse<Raw, Serialized>(clone);
-
-  function _createHistoryRecord(): UseRefHistoryRecord<Serialized> {
+  function _createHistoryRecord(): UseRefHistoryRecord<Raw> {
     return markRaw({
-      snapshot: dump(source.value),
+      snapshot: source.value,
       timestamp: timestamp(),
     });
   }
 
-  const last: Ref<UseRefHistoryRecord<Serialized>> = ref(_createHistoryRecord()) as Ref<UseRefHistoryRecord<Serialized>>;
+  const last: Ref<UseRefHistoryRecord<Raw>> = ref(_createHistoryRecord()) as Ref<UseRefHistoryRecord<Raw>>;
 
-  const undoStack: Ref<UseRefHistoryRecord<Serialized>[]> = ref([]);
-  const redoStack: Ref<UseRefHistoryRecord<Serialized>[]> = ref([]);
+  const undoStack: Ref<UseRefHistoryRecord<Raw>[]> = ref([]);
+  const redoStack: Ref<UseRefHistoryRecord<Raw>[]> = ref([]);
 
-  const _setSource = (record: UseRefHistoryRecord<Serialized>) => {
-    setSource(source, parse(record.snapshot));
+  const _setSource = (record: UseRefHistoryRecord<Raw>) => {
+    setSource(source, record.snapshot);
     last.value = record;
   };
 
