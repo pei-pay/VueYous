@@ -85,6 +85,9 @@ export function useManualRefHistory<Raw>(
   const commit = () => {
     undoStack.value.unshift(last.value);
     last.value = _createHistoryRecord();
+    // commit した際に redoStack に要素がある場合はそれを全削除
+    if (redoStack.value.length)
+      redoStack.value.splice(0, redoStack.value.length);
   };
 
   const clear = () => {
