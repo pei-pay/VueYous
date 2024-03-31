@@ -11,12 +11,9 @@ export interface WatchIgnorableReturn {
   stop: WatchStopHandle;
 }
 
-// export function watchIgnorable<T, Immediate extends Readonly<boolean> = false>(source: WatchSource<T>, cb: WatchCallback<T, Immediate extends true ? T | undefined : T>): WatchIgnorableReturn;
-
 export function watchIgnorable<T>(
   source: WatchSource<T>,
   cb: WatchCallback<T>
-  // TODO: implement options
 ): WatchIgnorableReturn {
 
 
@@ -27,20 +24,8 @@ export function watchIgnorable<T>(
   const disposables: Fn[] = [];
 
   const ignoreCounter = ref(0);
-  // const syncCounter = ref(0);
-
-
-  // disposables.push(
-  //   watch(
-  //     source,
-  //     () => {
-  //       syncCounter.value++;
-  //     },
-  //   )
-  // );
 
   ignoreUpdates = (updater: () => void) => {
-    // const syncCounterPrev = syncCounter.value;
     updater();
     ignoreCounter.value++;
   };
@@ -49,10 +34,8 @@ export function watchIgnorable<T>(
     watch(
       source,
       (...args) => {
-        // If a history operation was performed (ignoreCounter > 0)
         const ignore = ignoreCounter.value > 0;
         ignoreCounter.value = 0;
-        // syncCounter.value = 0;
         if (ignore)
           return;
         cb(...args);
