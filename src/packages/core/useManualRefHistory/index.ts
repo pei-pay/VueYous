@@ -9,6 +9,10 @@ export interface UseRefHistoryRecord<T> {
   timestamp: number;
 }
 
+export interface UseManualHistoryOptions<Raw, Serialized = Raw> {
+  setSource?: (source: Ref<Raw>, v: Raw) => void;
+}
+
 export interface UseManualRefHistoryReturn<Raw, Serialized> {
   // TODO: もらう source をなぜ返す必要があるのか?
   // /** Bypassed tracking ref from the argument s*/
@@ -77,11 +81,16 @@ function defaultParse<R, S>(clone?: boolean | CloneFn<R>) {
 
 // TODO: optionsは指定なしで実装してみる
 export function useManualRefHistory<Raw, Serialized = Raw>(
-  source: Ref<Raw>
+  source: Ref<Raw>,
+  options: UseManualHistoryOptions<Raw, Serialized> = {},
 ): UseManualRefHistoryReturn<Raw, Serialized> {
 
+  const {
+    setSource = fnSetSource
+  } = options;
+
   /*
-   * NOTE: optionで指定できるやつら
+   * NOTE: optionで指定できるやつら。一旦デフォ値だけ使うようにする
    * If you are going to mutate the source, you need to pass a custom clone function or use clone true as a param, 
    * that is a shortcut for a minimal clone * * function x => JSON.parse(JSON.stringify(x)) that will be used in both dump and parse.
    * 
@@ -89,7 +98,6 @@ export function useManualRefHistory<Raw, Serialized = Raw>(
   const clone = false;
   const dump = defaultDump<Raw, Serialized>(clone);
   const parse = defaultParse<Raw, Serialized>(clone);
-  const setSource = fnSetSource;
 
   function _createHistoryRecord(): UseRefHistoryRecord<Serialized> {
     return markRaw({
