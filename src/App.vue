@@ -36,7 +36,7 @@ const { history, undo, redo, canUndo, canRedo } = useRefHistory(count);
     <br>
     <br>
     <div class="history">
-      <note>History</note>
+      <p class="note">History</p>
       <div v-for="i in history" :key="i.timestamp" class="history-item">
         <span>{{ format(i.timestamp) }}</span>
         <span>{ value: {{ i.snapshot }} }</span>
