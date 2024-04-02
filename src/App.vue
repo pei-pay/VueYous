@@ -7,7 +7,7 @@ import { useRefHistory } from './packages';
 
 function format(ts: number) {
   return formatDate(new Date(ts), 'YYYY-MM-DD HH:mm:ss');
-};
+}
 
 const count = ref(0);
 const inc = () => count.value++;
@@ -19,22 +19,14 @@ const { history, undo, redo, canUndo, canRedo } = useRefHistory(count);
   <div class="container">
     <div class="count">Count: {{ count }}</div>
     <div class="buttons">
-      <button @click="inc()" class="button">
-        Increment
-      </button>
-      <button @click="dec()" class="button">
-        Decrement
-      </button>
+      <button @click="inc()" class="button">Increment</button>
+      <button @click="dec()" class="button">Decrement</button>
       <span class="divider">/</span>
-      <button :disabled="!canUndo" @click="undo()" class="button">
-        Undo
-      </button>
-      <button :disabled="!canRedo" @click="redo()" class="button">
-        Redo
-      </button>
+      <button :disabled="!canUndo" @click="undo()" class="button">Undo</button>
+      <button :disabled="!canRedo" @click="redo()" class="button">Redo</button>
     </div>
-    <br>
-    <br>
+    <br />
+    <br />
     <div class="history">
       <p class="note">History</p>
       <div v-for="i in history" :key="i.timestamp" class="history-item">
@@ -49,7 +41,7 @@ const { history, undo, redo, canUndo, canRedo } = useRefHistory(count);
 /* REFACTOR: 一時的なスタイル */
 body {
   background-color: #1a1a1a;
-  color: white
+  color: white;
 }
 
 .container {

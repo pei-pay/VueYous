@@ -1,23 +1,12 @@
-import { type Ref } from "vue";
-import { watchIgnorable } from "@/packages/shared";
+import { type Ref } from 'vue';
+import { watchIgnorable } from '@/packages/shared';
 
-import { useManualRefHistory, type UseManualRefHistoryReturn } from "../useManualRefHistory";
+import { useManualRefHistory, type UseManualRefHistoryReturn } from '../useManualRefHistory';
 
-export interface UseRefHistoryReturn<Raw> extends UseManualRefHistoryReturn<Raw> {
-}
+export interface UseRefHistoryReturn<Raw> extends UseManualRefHistoryReturn<Raw> {}
 
-export function useRefHistory<Raw>(
-  source: Ref<Raw>
-) {
-
-  const {
-    ignoreUpdates,
-  } = watchIgnorable(
-    source,
-    commit,
-  );
-
-
+export function useRefHistory<Raw>(source: Ref<Raw>) {
+  const { ignoreUpdates } = watchIgnorable(source, commit);
 
   function setSource(source: Ref<Raw>, value: Raw) {
     ignoreUpdates(() => {

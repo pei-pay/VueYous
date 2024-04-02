@@ -1,7 +1,7 @@
 // NOTE: 実際は 'vue-demi' からimportされてる
-import { computed, markRaw, ref, type Ref } from "vue";
+import { computed, markRaw, ref, type Ref } from 'vue';
 
-import { timestamp } from "@/packages/shared/utils";
+import { timestamp } from '@/packages/shared/utils';
 
 export interface UseRefHistoryRecord<T> {
   snapshot: T;
@@ -52,26 +52,25 @@ export interface UseManualRefHistoryReturn<Raw> {
 }
 
 function fnSetSource<F>(source: Ref<F>, value: F) {
-  return source.value = value;
+  return (source.value = value);
 }
 
 export function useManualRefHistory<Raw>(
   source: Ref<Raw>,
-  options: UseManualHistoryOptions<Raw> = {},
+  options: UseManualHistoryOptions<Raw> = {}
 ): UseManualRefHistoryReturn<Raw> {
-
-  const {
-    setSource = fnSetSource
-  } = options;
+  const { setSource = fnSetSource } = options;
 
   function _createHistoryRecord(): UseRefHistoryRecord<Raw> {
     return markRaw({
       snapshot: source.value,
-      timestamp: timestamp(),
+      timestamp: timestamp()
     });
   }
 
-  const last: Ref<UseRefHistoryRecord<Raw>> = ref(_createHistoryRecord()) as Ref<UseRefHistoryRecord<Raw>>;
+  const last: Ref<UseRefHistoryRecord<Raw>> = ref(_createHistoryRecord()) as Ref<
+    UseRefHistoryRecord<Raw>
+  >;
 
   const undoStack: Ref<UseRefHistoryRecord<Raw>[]> = ref([]);
   const redoStack: Ref<UseRefHistoryRecord<Raw>[]> = ref([]);
@@ -81,13 +80,11 @@ export function useManualRefHistory<Raw>(
     last.value = record;
   };
 
-
   const commit = () => {
     undoStack.value.unshift(last.value);
     last.value = _createHistoryRecord();
     // commit した際に redoStack に要素がある場合はそれを全削除
-    if (redoStack.value.length)
-      redoStack.value.splice(0, redoStack.value.length);
+    if (redoStack.value.length) redoStack.value.splice(0, redoStack.value.length);
   };
 
   const clear = () => {
@@ -122,8 +119,6 @@ export function useManualRefHistory<Raw>(
   const canUndo = computed(() => undoStack.value.length > 0);
   const canRedo = computed(() => redoStack.value.length > 0);
 
-
-
   return {
     // source,
     undoStack,
@@ -137,6 +132,6 @@ export function useManualRefHistory<Raw>(
     commit,
     reset,
     undo,
-    redo,
+    redo
   };
 }
