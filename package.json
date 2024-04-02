@@ -11,9 +11,9 @@
     "type-check": "vue-tsc --build --force",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "fmt": "prettier --write src/",
-    "docs:dev": "vitepress dev books",
-    "docs:build": "vitepress build books",
-    "docs:preview": "vitepress preview books"
+    "docs:dev": "vitepress dev book",
+    "docs:build": "vitepress build book",
+    "docs:preview": "vitepress preview book"
   },
   "dependencies": {
     "@vueuse/core": "^10.9.0",
