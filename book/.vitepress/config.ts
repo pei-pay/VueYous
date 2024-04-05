@@ -1,5 +1,12 @@
 import { defineConfig } from 'vitepress';
 
+
+const Guide = [
+  { text: 'はじめに', link: '/guide/' },
+  { text: 'VueUseとは', link: '/guide/what-is-vueuse' },
+  { text: '環境構築', link: '/guide/setup' }
+];
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "VueYous",
@@ -8,16 +15,13 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: 'Guide', items: Guide }
     ],
 
     sidebar: [
       {
-        text: 'Examples',
-        items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
-        ]
+        text: 'Guide',
+        items: Guide
       }
     ],
 
