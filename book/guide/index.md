@@ -17,3 +17,8 @@
 ## 本書の構成
 
 <!-- TODO: write about book structure  -->
+
+
+## この本に対する意見や質問について
+
+<!-- TODO: write about how to ask questions -->
