@@ -3,7 +3,7 @@
 layout: home
 
 hero:
-  name: "Vue Yous"
+  name: "VueYous"
   text: "Craft Your Own VueUse Composables From Scratch"
   tagline: My great project tagline
   actions:

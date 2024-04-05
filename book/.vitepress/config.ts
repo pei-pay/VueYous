@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "Vue Yous",
+  title: "VueYous",
   description: "Craft Your Own VueUse Composables From Scratch",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
