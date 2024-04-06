@@ -8,7 +8,10 @@
 
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@vueyous/core": ["./packages/core/index.ts"],
+      "@vueyous/core/*": ["./packages/core/*"],
+      "@vueyous/shared": ["./packages/shared/index.ts"],
+      "@vueyous/shared/*": ["./packages/shared/*"]
     }
   }
 }
