@@ -5,15 +5,16 @@ layout: home
 hero:
   name: "VueYous"
   text: "Craft Your Own VueUse Composables From Scratch"
-  tagline: My great project tagline
+  tagline: powered by VitePress
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: Get Started
+      link: /guide/
     - theme: alt
       text: VueUse Official
       link: https://vueuse.org/
 
+# TODO: Write features
 features:
   - title: Feature A
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
