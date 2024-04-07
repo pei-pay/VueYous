@@ -3,9 +3,10 @@
 layout: home
 
 hero:
-  name: "VueYous"
-  text: "Craft Your Own VueUse Composables From Scratch"
+  name: 'VueYous'
+  text: 'Craft Your Own VueUse Composables From Scratch'
   tagline: powered by VitePress
+  image: /logo.png
   actions:
     - theme: brand
       text: Get Started
@@ -23,4 +24,3 @@ features:
   - title: Feature C
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---
-
