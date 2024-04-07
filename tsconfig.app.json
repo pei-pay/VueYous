@@ -1,6 +1,6 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "packages/core", "packages/shared"],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
     "composite": true,
@@ -8,7 +8,10 @@
 
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@vueyous/core": ["./packages/core/index.ts"],
+      "@vueyous/core/*": ["./packages/core/*"],
+      "@vueyous/shared": ["./packages/shared/index.ts"],
+      "@vueyous/shared/*": ["./packages/shared/*"]
     }
   }
 }
