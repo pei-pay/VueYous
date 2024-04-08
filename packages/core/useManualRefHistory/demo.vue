@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref } from 'vue'
 // TODO: make formatDate
-import { formatDate } from '@vueuse/core';
+import { formatDate } from '@vueuse/core'
 
-import { useManualRefHistory } from '../useManualRefHistory';
+import { useManualRefHistory } from '../useManualRefHistory'
 
 function format(ts: number) {
-  return formatDate(new Date(ts), 'YYYY-MM-DD HH:mm:ss');
+  return formatDate(new Date(ts), 'YYYY-MM-DD HH:mm:ss')
 }
 
-const count = ref(0);
-const inc = () => count.value++;
-const dec = () => count.value--;
-const { canUndo, canRedo, history, commit, undo, redo } = useManualRefHistory(count);
+const count = ref(0)
+const inc = () => count.value++
+const dec = () => count.value--
+const { canUndo, canRedo, history, commit, undo, redo } = useManualRefHistory(count)
 </script>
 
 <template>

@@ -1,7 +1,8 @@
 {
   "recommendations": [
-    "Vue.volar",
-    "dbaeumer.vscode-eslint",
+    "dbaeumer.vscode-eslint"
+  ],
+  "unwantedRecommendations": [
     "esbenp.prettier-vscode"
   ]
 }
