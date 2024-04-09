@@ -2,6 +2,7 @@
   "name": "vue-use-rep",
   "version": "0.0.1-alpha.1",
   "private": true,
+  "packageManager": "pnpm@8.15.6",
   "type": "module",
   "scripts": {
     "dev": "vite",
