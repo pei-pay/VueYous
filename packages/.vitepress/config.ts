@@ -1,6 +1,5 @@
 import { defineConfig } from 'vitepress';
 
-
 const Guide = [
   { text: 'はじめに', link: '/guide/' },
   { text: 'VueUseとは', link: '/guide/what-is-vueuse' },
@@ -9,9 +8,16 @@ const Guide = [
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "VueYous",
-  description: "Craft Your Own VueUse Composables From Scratch",
+  title: 'VueYous',
+  description: 'Craft Your Own VueUse Composables From Scratch',
+  head: [
+    [
+      'link',
+      { rel: 'icon', href: '/logo.png' }
+    ]
+  ],
   themeConfig: {
+    logo: '/logo.png',
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
@@ -25,8 +31,6 @@ export default defineConfig({
       }
     ],
 
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/pei-pay/VueYous' }
-    ]
+    socialLinks: [{ icon: 'github', link: 'https://github.com/pei-pay/VueYous' }]
   }
 });
