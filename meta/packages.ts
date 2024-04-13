@@ -1,4 +1,4 @@
-import type { PackageManifest } from '@vueyous/metadata';
+import type { PackageManifest } from '@vueyous/metadata'
 
 export const packages: PackageManifest[] = [
   {
@@ -154,4 +154,4 @@ export const packages: PackageManifest[] = [
   //   ],
   //   iife: false,
   // },
-];
+]

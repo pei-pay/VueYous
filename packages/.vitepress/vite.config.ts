@@ -1,7 +1,6 @@
-import { resolve } from 'node:path';
-import { defineConfig } from 'vite';
-import { MarkdownTransform } from './plugins/markdownTransform';
-
+import { resolve } from 'node:path'
+import { defineConfig } from 'vite'
+import { MarkdownTransform } from './plugins/markdownTransform'
 
 export default defineConfig({
   server: {
@@ -19,5 +18,5 @@ export default defineConfig({
       '@vueyous/metadata': resolve(__dirname, '../metadata/index.ts'),
     },
     dedupe: ['vue'],
-  }
-});
+  },
+})
