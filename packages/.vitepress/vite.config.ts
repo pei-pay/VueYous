@@ -1,9 +1,9 @@
-import { resolve } from 'node:path';
-import { defineConfig } from 'vite';
-import Components from 'unplugin-vue-components/vite';
-import UnoCSS from 'unocss/vite';
+import { resolve } from 'node:path'
+import { defineConfig } from 'vite'
+import Components from 'unplugin-vue-components/vite'
+import UnoCSS from 'unocss/vite'
 
-import { MarkdownTransform } from './plugins/markdownTransform';
+import { MarkdownTransform } from './plugins/markdownTransform'
 
 export default defineConfig({
   server: {
@@ -33,4 +33,4 @@ export default defineConfig({
     },
     dedupe: ['vue'],
   },
-});
+})

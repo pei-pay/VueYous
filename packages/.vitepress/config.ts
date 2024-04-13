@@ -1,27 +1,27 @@
-import { defineConfig } from 'vitepress';
+import { defineConfig } from 'vitepress'
 
-import { categoryNames, coreCategoryNames, metadata } from '../metadata/metadata';
+import { categoryNames, coreCategoryNames, metadata } from '../metadata/metadata'
 
-import viteConfig from './vite.config';
+import viteConfig from './vite.config'
 
 const Guide = [
   { text: 'はじめに', link: '/guide/' },
   { text: 'VueUseとは', link: '/guide/what-is-vueuse' },
   { text: '環境構築', link: '/guide/setup' },
-];
+]
 
 const CoreCategories = coreCategoryNames.map(c => ({
   text: c,
   activeMatch: '___', // never active
   link: `/functions#category=${c}`,
-}));
+}))
 
 const DefaultSideBar = [
   { text: 'Guide', items: Guide },
   { text: 'Core Functions', items: CoreCategories },
-];
+]
 
-const FunctionsSideBar = getFunctionsSideBar();
+const FunctionsSideBar = getFunctionsSideBar()
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -64,16 +64,16 @@ export default defineConfig({
   },
   // FIXME: any
   vite: viteConfig as any,
-});
+})
 
 function getFunctionsSideBar() {
-  const links: any = [];
+  const links: any = []
 
   for (const name of categoryNames) {
     if (name.startsWith('_'))
-      continue;
+      continue
 
-    const functions = metadata.functions.filter(i => i.category === name && !i.internal);
+    const functions = metadata.functions.filter(i => i.category === name && !i.internal)
 
     links.push({
       text: name,
@@ -84,8 +84,8 @@ function getFunctionsSideBar() {
       link: name.startsWith('@')
         ? (functions[0].external || `/${functions[0].package}/README`)
         : undefined,
-    });
+    })
   }
 
-  return links;
+  return links
 }

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { onErrorCaptured, ref } from 'vue';
+import { onErrorCaptured, ref } from 'vue'
 
-const error = ref<Error | null>(null);
+const error = ref<Error | null>(null)
 
 onErrorCaptured((err) => {
-  error.value = err;
-});
+  error.value = err
+})
 </script>
 
 <template>
