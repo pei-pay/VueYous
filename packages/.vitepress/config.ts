@@ -1,10 +1,10 @@
-import { defineConfig } from 'vitepress';
+import { defineConfig } from 'vitepress'
 
 const Guide = [
   { text: 'はじめに', link: '/guide/' },
   { text: 'VueUseとは', link: '/guide/what-is-vueuse' },
-  { text: '環境構築', link: '/guide/setup' }
-];
+  { text: '環境構築', link: '/guide/setup' },
+]
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -21,16 +21,16 @@ export default defineConfig({
 
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Guide', items: Guide }
+      { text: 'Guide', items: Guide },
     ],
 
     sidebar: [
       {
         text: 'Guide',
-        items: Guide
-      }
+        items: Guide,
+      },
     ],
 
-    socialLinks: [{ icon: 'github', link: 'https://github.com/pei-pay/VueYous' }]
-  }
-});
+    socialLinks: [{ icon: 'github', link: 'https://github.com/pei-pay/VueYous' }],
+  },
+})
