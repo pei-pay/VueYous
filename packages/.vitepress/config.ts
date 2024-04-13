@@ -10,15 +10,15 @@ const Guide = [
 export default defineConfig({
   title: 'VueYous',
   description: 'Craft Your Own VueUse Composables From Scratch',
-  head: [
-    [
-      'link',
-      { rel: 'icon', href: '/logo.png' }
-    ]
-  ],
+
+  head: [['link', { rel: 'icon', href: '/logo.png' }]],
+
+  // https://vitepress.dev/reference/default-theme-config
   themeConfig: {
+    search: { provider: 'local' },
     logo: '/logo.png',
     // https://vitepress.dev/reference/default-theme-config
+
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Guide', items: Guide }
