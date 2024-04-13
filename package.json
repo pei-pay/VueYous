@@ -13,7 +13,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "lint:text": "textlint .",
-    "docs:dev": "vitepress dev packages",
+    "docs:dev": "nr update && vitepress dev packages",
     "docs:build": "vitepress build packages",
     "docs:preview": "vitepress preview packages",
     "update": "nr -C packages/metadata update"
