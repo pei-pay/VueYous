@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { useTimeAgo } from '@vueuse/core';
-import { computed } from 'vue';
-import { functions } from '@vueyous/metadata';
+import { useTimeAgo } from '@vueuse/core'
+import { computed } from 'vue'
+import { functions } from '@vueyous/metadata'
 
-const props = defineProps<{ fn: string; }>();
-const info = computed(() => functions.find(i => i.name === props.fn)!);
-const lastUpdated = useTimeAgo(new Date(info.value?.lastUpdated || 0));
-const link = computed(() => `/functions\#category=${encodeURIComponent(info.value!.category!)}`);
+const props = defineProps<{ fn: string }>()
+const info = computed(() => functions.find(i => i.name === props.fn)!)
+const lastUpdated = useTimeAgo(new Date(info.value?.lastUpdated || 0))
+const link = computed(() => `/functions\#category=${encodeURIComponent(info.value!.category!)}`)
 </script>
 
 <template>

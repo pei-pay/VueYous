@@ -1,4 +1,4 @@
-import type { PackageManifest } from '@vueyous/metadata';
+import type { PackageManifest } from '@vueyous/metadata'
 
 export const packages: PackageManifest[] = [
   {
@@ -18,4 +18,4 @@ export const packages: PackageManifest[] = [
     display: 'VueYous',
     description: 'Collection of essential Vue Composition Utilities',
   },
-];
+]
