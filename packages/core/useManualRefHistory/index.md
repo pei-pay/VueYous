@@ -1,6 +1,6 @@
 ---
 category: State
-related: useManualRefHistory
+related: useRefHistory
 ---
 
 # useManualRefHistory

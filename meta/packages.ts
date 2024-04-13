@@ -1,9 +1,9 @@
-import type { PackageManifest } from '@vueyous/metadata'
+import type { PackageManifest } from '@vueyous/metadata';
 
 export const packages: PackageManifest[] = [
   {
     name: 'metadata',
-    display: 'Metadata for VueUse functions',
+    display: 'Metadata for VueYous functions',
     manualImport: true,
     iife: false,
     utils: true,
@@ -15,7 +15,7 @@ export const packages: PackageManifest[] = [
   },
   {
     name: 'core',
-    display: 'VueUse',
+    display: 'VueYous',
     description: 'Collection of essential Vue Composition Utilities',
   },
   // {
@@ -154,4 +154,4 @@ export const packages: PackageManifest[] = [
   //   ],
   //   iife: false,
   // },
-]
+];
