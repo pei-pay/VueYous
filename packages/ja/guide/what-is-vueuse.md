@@ -1,3 +1,3 @@
-# What is VueUse
+# VueUseとは
 
 <!-- TODO: write what is vueuse -->

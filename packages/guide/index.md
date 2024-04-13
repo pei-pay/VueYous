@@ -1,26 +1,26 @@
-# はじめに
+# Introduction
 
-## 本書の目的
+## Purpose of this book
 
-以下が本書の主な目的になります。
+The main objectives of this book are as follows:
 
-- VueUse のような「再利用性」、「保守性」、「拡張性」を意識したコンポーザブルを作成できるようになる
-- 様々な機能のコンポーザブルを実際に作ることで、Vue.js と TypeScript の理解を深める
-- オープンソースのコードを読んで、実用的なコーディングテクニックやベストプラクティスを学ぶ
+- To be able to create composable functions with a focus on "reusability," "maintainability," and "extensibility" like VueUse
+- To deepen the understanding of Vue.js and TypeScript by actually creating composable functions with various functionalities
+- To learn practical coding techniques and best practices by reading open-source code
 
-## 本書の方針
+## Approach of this book
 
-- **最低限で再現**: VueUse のコンポーザブルを完全再現することは目指しません。必要最低限で実装することによる読みやすさを重視します。
+- **Minimal Reproduction**: We do not aim to fully replicate the composable functions of VueUse. We prioritize readability by implementing only the necessary minimum.
 
-- **分かりやすさ**: 複雑な概念も分かりやすく解説し、読者がストレスなく学習できるよう配慮します。わかりやすい説明や具体的な例を使用し、読者がスムーズに理解できるよう努めます。
+- **Clarity**: We explain complex concepts in an easy-to-understand manner and take care to ensure that readers can learn without stress. We use clear explanations and concrete examples to help readers understand smoothly.
 
-- **実用性**: 学んだ知識が現実の開発に役立つことを重視します。理論だけでなく、実践的な問題解決のアプローチやベストプラクティスに焦点を当てます。
+- **Practicality**: We emphasize that the knowledge learned is useful in real-world development. We focus not only on theory but also on practical approaches to problem-solving and best practices.
 
-## 対象読者
+## Target Audience
 
-- Vue.js を使ったことがある
-- Typescript を使ったことがある
+- Those who have used Vue.js
+- Those who have used TypeScript
 
-## 本書の構成
+## Structure of this book
 
-<!-- TODO: write about book structure  -->
+<!-- TODO: write about book structure -->
