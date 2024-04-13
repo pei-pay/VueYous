@@ -1,0 +1,8 @@
+{
+  "name": "@vueyous/metadata",
+  "version": "0.0.1-alpha.1",
+  "type": "module",
+  "scripts": {
+    "update": "esno scripts/update.ts"
+  }
+}
