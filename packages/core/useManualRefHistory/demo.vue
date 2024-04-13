@@ -17,24 +17,14 @@ const { canUndo, canRedo, history, commit, undo, redo } = useManualRefHistory(co
 
 <template>
   <div>Count: {{ count }}</div>
-  <button @click="inc()">
-    Increment
-  </button>
-  <button @click="dec()">
-    Decrement
-  </button>
+  <button @click="inc()">Increment</button>
+  <button @click="dec()">Decrement</button>
   <span class="ml-2">/</span>
-  <button @click="commit()">
-    Commit
-  </button>
-  <button :disabled="!canUndo" @click="undo()">
-    Undo
-  </button>
-  <button :disabled="!canRedo" @click="redo()">
-    Redo
-  </button>
-  <br>
-  <br>
+  <button @click="commit()">Commit</button>
+  <button :disabled="!canUndo" @click="undo()">Undo</button>
+  <button :disabled="!canRedo" @click="redo()">Redo</button>
+  <br />
+  <br />
   <note>History (limited to 10 records for demo)</note>
   <div class="code-block mt-4">
     <div v-for="i in history" :key="i.timestamp">

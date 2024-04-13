@@ -3,7 +3,7 @@ import { watchIgnorable } from '@vueyous/shared';
 
 import { useManualRefHistory, type UseManualRefHistoryReturn } from '../useManualRefHistory';
 
-export interface UseRefHistoryReturn<Raw> extends UseManualRefHistoryReturn<Raw> { }
+export interface UseRefHistoryReturn<Raw> extends UseManualRefHistoryReturn<Raw> {}
 
 export function useRefHistory<Raw>(source: Ref<Raw>) {
   const { ignoreUpdates } = watchIgnorable(source, commit);
