@@ -30,8 +30,8 @@ const sidebar: i18nTheme['sidebar'] = {
   'ja/guide/': DefaultSideBar,
   'ja/functions': FunctionsSideBar,
   // TODO: ja
-  '/core/': FunctionsSideBar,
-  '/shared/': FunctionsSideBar,
+  'ja/core/': FunctionsSideBar,
+  'ja/shared/': FunctionsSideBar,
 }
 
 export const ja: i18nTheme = { nav, sidebar }
