@@ -53,7 +53,6 @@ export async function getFunctionMarkdown(pkg: string, name: string) {
   const URL = `${GITHUB_BLOB_URL}/${pkg}/${name}`
 
   const dirname = join(DIR_SRC, pkg, name)
-  console.log("🚀 ~ getFunctionMarkdown ~ dirname:", dirname)
   const demoPath = ['demo.vue'].find(i => fs.existsSync(join(dirname, i)))
 
   const links = ([
