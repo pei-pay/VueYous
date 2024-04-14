@@ -1,6 +1,6 @@
-import type { DefaultTheme, UserConfig } from 'vitepress';
+import type { DefaultTheme, UserConfig } from 'vitepress'
 
-import viteConfig from '../vite.config';
+import viteConfig from '../vite.config'
 
 // https://vitepress.dev/reference/site-config
 export const sharedConfig: UserConfig<DefaultTheme.Config> = {
@@ -16,4 +16,4 @@ export const sharedConfig: UserConfig<DefaultTheme.Config> = {
   },
   // FIXME: any
   vite: viteConfig as any,
-} as const;
+} as const
