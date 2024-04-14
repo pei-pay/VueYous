@@ -29,7 +29,7 @@ const nav: i18nTheme['nav'] = [
 const sidebar: i18nTheme['sidebar'] = {
   'ja/guide/': DefaultSideBar,
   'ja/functions': FunctionsSideBar,
-  // TODO: ja 
+  // TODO: ja
   '/core/': FunctionsSideBar,
   '/shared/': FunctionsSideBar,
 }
