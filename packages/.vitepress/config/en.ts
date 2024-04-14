@@ -23,7 +23,7 @@ const FunctionsSideBar = getFunctionsSideBar()
 const nav: i18nTheme['nav'] = [
   { text: 'Home', link: '/' },
   { text: 'Guide', link: '/guide/' },
-  { text: 'Functions', link: '/functions/' },
+  { text: 'Functions', link: '/functions' },
 ]
 
 const sidebar: i18nTheme['sidebar'] = {
