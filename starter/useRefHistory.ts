@@ -1,4 +1,4 @@
-import { ref, watch, type Ref } from 'vue'
+import { type Ref, ref, watch } from 'vue'
 
 interface UseRefHistoryRecord<T> {
   snapshot: T
@@ -13,16 +13,14 @@ interface UseRefHistoryReturn<Raw> {
 }
 
 export function useRefHistory<Raw>(source: Ref<Raw>): UseRefHistoryReturn<Raw> {
-
   const history: Ref<UseRefHistoryRecord<Raw>[]> = ref([])
   const canUndo = ref(false)
   const canRedo = ref(false)
   const undo = () => {}
   const redo = () => {}
 
-
   watch(source, () => {
-    
+
   })
 
   return {

@@ -27,7 +27,7 @@ ref の変更履歴を自動で追跡し、値を戻したり、戻した値を�
 
 - ユーザーが提供するもの
   - 履歴を管理したいref: count
-- ユーザーに提供するもの 
+- ユーザーに提供するもの
   - 履歴: history
     - 値と時刻(タイムスタンプ)がわかるといい
   - 履歴を戻す関数: undo
@@ -65,7 +65,6 @@ interface UseRefHistoryReturn<Raw> {
 }
 
 export function useRefHistory<Raw>(source: Ref<Raw>): UseRefHistoryReturn<Raw> {
-
   // 中身はこれから実装する
 
   return {

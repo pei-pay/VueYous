@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref } from 'vue'
 
-import { useRefHistory } from './starter/useRefHistory';
+import { useRefHistory } from './starter/useRefHistory'
 
-const format = (timestamp: number): string => {
-  const date = new Date(timestamp);
-  return date.toISOString().slice(0, 19).replace('T', ' ');
+function format(timestamp: number): string {
+  const date = new Date(timestamp)
+  return date.toISOString().slice(0, 19).replace('T', ' ')
 }
 
-const count = ref(0);
-const { history, canUndo, canRedo, undo, redo } = useRefHistory(count);
+const count = ref(0)
+const { history, canUndo, canRedo, undo, redo } = useRefHistory(count)
 </script>
 
 <template>
