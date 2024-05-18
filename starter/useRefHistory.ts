@@ -1,4 +1,4 @@
-import { type Ref, ref, watch, markRaw, computed } from 'vue'
+import { type Ref, computed, markRaw, ref, watch } from 'vue'
 
 interface UseRefHistoryRecord<T> {
   snapshot: T
@@ -15,11 +15,13 @@ interface UseRefHistoryReturn<Raw> {
 export const timestamp = () => +Date.now()
 
 export function useRefHistory<Raw>(source: Ref<Raw>): UseRefHistoryReturn<Raw> {
+  const ignore = ref(false)
+  const last: Ref<UseRefHistoryRecord<Raw>> = ref(_createHistoryRecord()) as Ref<UseRefHistoryRecord<Raw>>
 
   function _createHistoryRecord(): UseRefHistoryRecord<Raw> {
     return markRaw({
       snapshot: source.value,
-      timestamp: timestamp()
+      timestamp: timestamp(),
     })
   }
 
@@ -30,36 +32,33 @@ export function useRefHistory<Raw>(source: Ref<Raw>): UseRefHistoryReturn<Raw> {
     ignore.value = false
   }
 
-  const ignore = ref(false)
-
-  const last: Ref<UseRefHistoryRecord<Raw>> = ref(_createHistoryRecord()) as Ref<UseRefHistoryRecord<Raw>>
-
-  const undoStack: Ref<UseRefHistoryRecord<Raw>[]> = ref([]);
+  const undoStack: Ref<UseRefHistoryRecord<Raw>[]> = ref([])
   const redoStack: Ref<UseRefHistoryRecord<Raw>[]> = ref([])
 
   const undo = () => {
     const state = undoStack.value.shift()
-    if(state) {
+    if (state) {
       redoStack.value.unshift(last.value)
       _setSource(state)
     }
   }
   const redo = () => {
-    const state = redoStack.value.shift();
+    const state = redoStack.value.shift()
 
     if (state) {
-      undoStack.value.unshift(last.value);
-      _setSource(state);
+      undoStack.value.unshift(last.value)
+      _setSource(state)
     }
   }
 
   watch(source, () => {
-    if(ignore.value) return
+    if (ignore.value)
+      return
     undoStack.value.unshift(last.value)
     last.value = _createHistoryRecord()
-    if(redoStack.value.length) 
+    if (redoStack.value.length)
       redoStack.value.splice(0, redoStack.value.length)
-  }, { flush: 'sync'} )
+  }, { flush: 'sync' })
 
   const history = computed(() => [last.value, ...undoStack.value])
   const canUndo = computed(() => undoStack.value.length > 0)
