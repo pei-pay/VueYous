@@ -5,7 +5,7 @@ import { type UseManualRefHistoryReturn, useManualRefHistory } from '../useManua
 
 export interface UseRefHistoryReturn<Raw> extends UseManualRefHistoryReturn<Raw> {}
 
-export function useRefHistory<Raw>(source: Ref<Raw>) {
+export function useRefHistory<Raw>(source: Ref<Raw>): UseRefHistoryReturn<Raw> {
   const { ignoreUpdates } = watchIgnorable(source, commit)
 
   function setSource(source: Ref<Raw>, value: Raw) {
