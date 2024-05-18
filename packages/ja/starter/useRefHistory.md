@@ -26,7 +26,7 @@ ref の変更履歴を自動で追跡し、値を戻したり、戻した値を�
 まずはユーザーがこのコンポーザブルをどのように使うか考えてみましょう。デモで確認した通り、カウントの値の変更履歴を管理したいとします。
 
 - ユーザーが提供するもの
-  - 履歴を管理したいref: count
+  - 履歴を管理したい ref: count
 - ユーザーに提供するもの
   - 履歴: history
     - 値と時刻(タイムスタンプ)がわかるといい
@@ -81,8 +81,8 @@ export function useRefHistory<Raw>(source: Ref<Raw>): UseRefHistoryReturn<Raw> {
 
 `useRefHistory` がどういったことをするのか実装者の視点で考えてみましょう
 
-- ユーザーから受け取った値 (引数のsource) を監視し、値が変わったら履歴にその時の値と時刻を追加する
+- ユーザーから受け取った値 (引数の source) を監視し、値が変わったら履歴にその時の値と時刻を追加する
 - undo を発火したら、履歴から一番最新のものを削除し、source の値を次に最新の値にする
-- redo を発火したら、undo で戻したものの中から一番最近のものを、sourceの値にし、履歴に戻す。
-- canUndo は履歴あればtrue、ないならfalse
-- canRedo は undoで戻したものがあれば true、ないなら false
+- redo を発火したら、undo で戻したものの中から一番最近のものを、source の値にし、履歴に戻す。
+- canUndo は履歴あれば true、ないなら false
+- canRedo は undo で戻したものがあれば true、ないなら false
